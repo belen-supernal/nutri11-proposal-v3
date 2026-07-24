@@ -546,13 +546,37 @@ body { font-family: var(--sans); color: var(--text); background: var(--bg); -web
 @media (max-width: 760px) { .funnel-stage { font-size: 12px; padding: 7px 14px; } }
 
 /* VERSION TOGGLE */
-.vtoggle { display:inline-flex; background:var(--bg-2); border:1px solid var(--border); border-radius:var(--radius-pill); padding:5px; gap:5px; margin:28px 0 14px; flex-wrap:wrap; }
-.vopt { border:none; background:transparent; cursor:pointer; font-family:var(--sans); font-size:14px; font-weight:600; color:var(--text-3); padding:10px 20px; border-radius:var(--radius-pill); transition:all .15s; display:flex; align-items:baseline; gap:8px; }
-.vopt:hover { color:var(--text); }
-.vopt.on { background:var(--text); color:#fff; box-shadow:0 2px 10px rgba(0,0,0,.12); }
-.vopt .price { font-size:12px; font-weight:600; opacity:.65; }
+.vpick { background:var(--bg-2); border:1px solid var(--border); border-radius:var(--radius-card); padding:22px 24px; margin-bottom:32px; }
+.vpick-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--text-4); margin-bottom:14px; }
+.vtoggle { display:inline-flex; background:var(--bg); border:1px solid var(--border-2, var(--border)); border-radius:var(--radius-pill); padding:6px; gap:6px; flex-wrap:wrap; box-shadow:inset 0 1px 3px rgba(0,0,0,.04); }
+.vopt { border:none; background:transparent; cursor:pointer; font-family:var(--sans); font-size:15px; font-weight:600; color:var(--text-3); padding:13px 26px; border-radius:var(--radius-pill); transition:all .15s; display:flex; align-items:center; gap:10px; }
+.vopt:hover { color:var(--text); background:rgba(0,0,0,.03); }
+.vopt.on { background:var(--text); color:#fff; box-shadow:0 4px 14px rgba(0,0,0,.18); }
+.vopt.on:hover { background:var(--text); }
+.vopt .vname { font-weight:700; }
+.vopt .price { font-size:14px; font-weight:600; opacity:.6; }
 .vopt.on .price { opacity:.85; }
-.vsummary { font-size:15px; color:var(--text-2); max-width:66ch; margin-top:8px; }
+.vsummary { font-size:15px; color:var(--text-2); max-width:70ch; margin:16px 0 0; }
+
+/* ENGAGEMENT GANTT */
+.engage { margin-top:8px; }
+.engage-scale { display:flex; justify-content:space-between; font-size:11px; color:var(--text-4); font-weight:600; padding:0 2px 6px; max-width:900px; }
+.engage-track { display:flex; gap:6px; max-width:900px; }
+.eseg { border-radius:10px; padding:16px 20px; color:#fff; }
+.eseg .et { font-size:14px; font-weight:700; }
+.eseg .es { font-size:12px; opacity:.85; margin-top:3px; }
+.eseg.build { background:var(--blue); flex:3; }
+.eseg.cont { background:var(--lime); color:#4a5215; flex:9; }
+.cycle { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:22px 0 0; }
+.cstep { font-size:12.5px; font-weight:600; color:var(--text-2); background:var(--bg-2); border:1px solid var(--border); border-radius:var(--radius-pill); padding:7px 14px; }
+.cstep b { color:var(--text); }
+.carrow { color:var(--text-4); font-weight:700; }
+.engage-note { font-size:14px; color:var(--text-2); line-height:1.6; max-width:820px; margin-top:18px; }
+@media (max-width:640px){ .engage-track{flex-direction:column} .eseg.build,.eseg.cont{flex:none} }
+
+/* FUNNEL-ONLY (shown only in version B) */
+.funnel-only { display:none; }
+body[data-v="b"] .funnel-only { display:revert; }
 
 /* FUNNEL-ONLY (shown only in version B) */
 .funnel-only { display:none; }
@@ -597,11 +621,6 @@ body[data-v="b"] .funnel-only { display:revert; }
     <h1 class="hero-heading">Sales &amp; Customer Service.<br>One AI employee.</h1>
     <p class="hero-sub">A single AI employee for Nutri 11 that handles sales and customer service across your channels, grounded in your own knowledge base and policies, connected to your store and CRM, with your team always in the loop.</p>
 
-    <div class="vtoggle" role="tablist">
-      <button class="vopt on" data-set="a">Sales &amp; Service <span class="price">$4,000/mo</span></button>
-      <button class="vopt" data-set="b">+ Commerce Funnel <span class="price">$6,500/mo</span></button>
-    </div>
-    <p class="vsummary" id="vsummary"></p>
     <div class="hero-stats">
       <div class="hero-stat">
         <span class="stat-from">Fragmented sales &amp; support across channels</span>
@@ -624,6 +643,15 @@ body[data-v="b"] .funnel-only { display:revert; }
       <div class="tag">Scope of work</div>
       <h2 class="section-title">The AI Employee</h2>
       <p class="section-sub">One discrete, validated delivery: a sales and service AI employee for Nutri 11. Click to expand the scope.</p>
+    </div>
+
+    <div class="vpick">
+      <div class="vpick-label">Choose a version to explore. Everything below updates instantly.</div>
+      <div class="vtoggle" role="tablist">
+        <button class="vopt on" data-set="a"><span class="vname">Sales &amp; Service</span><span class="price">$4,000/mo</span></button>
+        <button class="vopt" data-set="b"><span class="vname">+ Commerce Funnel</span><span class="price">$6,500/mo</span></button>
+      </div>
+      <p class="vsummary" id="vsummary"></p>
     </div>
 
     <div class="phase-card open" id="phase-1">
@@ -758,6 +786,27 @@ body[data-v="b"] .funnel-only { display:revert; }
         <div class="wk">Week 12</div>
         <h4>Instagram &amp; WhatsApp live · production</h4>
         <p>Instagram and WhatsApp are added once web and email are proven; operating across all channels with KPIs instrumented and visible; <span class="funnel-only funnel-add">funnel dashboard live, showing conversion, drop-off, and revenue by channel and language;</span> no critical bugs in the core loop.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:52px; padding-top:36px; border-top:1px solid var(--border);">
+      <div class="prd-section-title" style="margin-bottom:18px">The engagement over time</div>
+      <div class="engage">
+        <div class="engage-scale"><span>Month 0</span><span>3</span><span>6</span><span>9</span><span>12</span></div>
+        <div class="engage-track">
+          <div class="eseg build"><div class="et">Main build</div><div class="es">First 3 months · milestones covered</div></div>
+          <div class="eseg cont"><div class="et">Continuous monthly cycles</div><div class="es">Same monthly fee, ongoing</div></div>
+        </div>
+        <div class="cycle">
+          <span class="cstep"><b>Scope</b> what ships next</span>
+          <span class="carrow">&rarr;</span>
+          <span class="cstep"><b>Ship</b> from the shared backlog</span>
+          <span class="carrow">&rarr;</span>
+          <span class="cstep"><b>Review</b> against the KPIs</span>
+          <span class="carrow">&#8635;</span>
+          <span class="cstep">repeats every cycle</span>
+        </div>
+        <p class="engage-note">Work continues in monthly cycles under the same fee. Each cycle opens with a scoping conversation where the Client confirms what ships next from the shared backlog, and closes with a review of what shipped against the KPIs. Work that doesn't ship in a given cycle rolls forward to the next.</p>
       </div>
     </div>
   </div>
