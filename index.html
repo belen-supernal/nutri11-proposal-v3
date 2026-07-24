@@ -702,7 +702,7 @@ body[data-v="b"] .funnel-only { display:revert; }
         <ul>
           <li><strong>Stage tracking</strong> · each conversation/customer is tagged with its current funnel stage, populated automatically from the AI employee's activity and Shopify events.</li>
           <li><strong>Recovery &amp; re-engagement</strong> · abandoned-checkout recovery and basic re-engagement (as already scoped), attributed back to the funnel.</li>
-          <li><strong>Funnel dashboard</strong> · volume, conversion, and drop-off between each stage, plus revenue — filterable by channel and language (ES/EN).</li>
+          <li><strong>Funnel dashboard</strong> · volume, conversion, and drop-off between each stage, plus revenue, filterable by channel and language (ES/EN).</li>
           <li><strong>Best-effort attribution</strong> · using the identifiers each channel provides (phone, email, Shopify customer).</li>
         </ul>
       </div>
@@ -744,8 +744,8 @@ body[data-v="b"] .funnel-only { display:revert; }
       <div class="mi">
         <div class="dot">4</div>
         <div class="wk">Week 8</div>
-        <h4>Live in-channel</h4>
-        <p>Responds on WhatsApp and Instagram, sells and serves from live Shopify data, and hands off to a human when out of scope.</p>
+        <h4>Live on web &amp; email</h4>
+        <p>Goes live first on the website and email, the lower-risk owned channels, selling and serving from live Shopify data and handing off to a human when out of scope.</p>
       </div>
       <div class="mi">
         <div class="dot">5</div>
@@ -756,8 +756,8 @@ body[data-v="b"] .funnel-only { display:revert; }
       <div class="mi">
         <div class="dot">6</div>
         <div class="wk">Week 12</div>
-        <h4>Live in production</h4>
-        <p>Operating on all channels with KPIs instrumented and visible; <span class="funnel-only funnel-add">funnel dashboard live — conversion, drop-off, and revenue by channel and language;</span> no critical bugs in the core loop.</p>
+        <h4>Instagram &amp; WhatsApp live · production</h4>
+        <p>Instagram and WhatsApp are added once web and email are proven; operating across all channels with KPIs instrumented and visible; <span class="funnel-only funnel-add">funnel dashboard live, showing conversion, drop-off, and revenue by channel and language;</span> no critical bugs in the core loop.</p>
       </div>
     </div>
   </div>
@@ -861,11 +861,11 @@ function togglePhase(trigger) {
 const VERSIONS = {
   a: {
     px: '$4,000', meta: '12-month commitment &middot; $48,000 total',
-    summary: 'Everything Nutri11 needs to sell and serve across every channel &mdash; one AI employee, one flat monthly fee.'
+    summary: 'Everything Nutri11 needs to sell and serve across every channel: one AI employee, one flat monthly fee.'
   },
   b: {
     px: '$6,500', meta: '12-month commitment &middot; $78,000 total',
-    summary: 'The Sales &amp; Service AI employee plus a tracked commerce funnel and dashboard &mdash; every stage from reached to purchased, by channel and language.'
+    summary: 'The Sales &amp; Service AI employee plus a tracked commerce funnel and dashboard: every stage from reached to purchased, by channel and language.'
   }
 };
 function setVersion(v){
