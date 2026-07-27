@@ -577,10 +577,7 @@ body { font-family: var(--sans); color: var(--text); background: var(--bg); -web
 /* FUNNEL-ONLY (shown only in version B) */
 .funnel-only { display:none; }
 body[data-v="b"] .funnel-only { display:revert; }
-
-/* FUNNEL-ONLY (shown only in version B) */
-.funnel-only { display:none; }
-body[data-v="b"] .funnel-only { display:revert; }
+body[data-v="b"] .tl-lane.funnel-only { display:grid; }
 
 /* TIMELINE */
 .tl { position:relative; max-width:840px; margin-top:8px; }
@@ -591,6 +588,16 @@ body[data-v="b"] .funnel-only { display:revert; }
 .mi .wk { font-size:10px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--blue); margin-bottom:3px; }
 .mi h4 { font-family:var(--sans); font-size:15px; font-weight:700; margin-bottom:4px; }
 .mi p { font-size:13.5px; color:var(--text-2); line-height:1.55; }
+
+/* 12-MONTH ACTIVATION SWIMLANE (override 20-col grid to 12) */
+#activation .tl-swim-inner { min-width: 1000px; }
+#activation .tl-swim-months,
+#activation .tl-lane,
+#activation .tl-grid-overlay { grid-template-columns: 160px repeat(12, 1fr); }
+#activation .tl-bar { text-transform: none; letter-spacing: .01em; font-size: 10px; }
+.swim-legend { display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; font-size:11px; color:var(--text-3); }
+.swim-legend span { display:inline-flex; align-items:center; gap:7px; }
+.swim-legend i { width:12px; height:12px; border-radius:3px; display:inline-block; }
 
 </style>
 </head>
@@ -786,6 +793,65 @@ body[data-v="b"] .funnel-only { display:revert; }
         <div class="wk">Week 12</div>
         <h4>Instagram &amp; WhatsApp live · production</h4>
         <p>Instagram and WhatsApp are added once web and email are proven; operating across all channels with KPIs instrumented and visible; <span class="funnel-only funnel-add">funnel dashboard live, showing conversion, drop-off, and revenue by channel and language;</span> no critical bugs in the core loop.</p>
+      </div>
+    </div>
+
+    <div id="activation" style="margin-top:52px;">
+      <div class="tl-swim-outer" style="margin-top:0;">
+        <div class="tl-swim-inner">
+          <div class="tl-swim-section" style="border-top:none; padding-top:0;">
+            <div class="tl-swim-title">AI Employee Activation &middot; Month by Month (12-month view)</div>
+            <div class="tl-swim-months">
+              <div class="tl-swim-month-label">Month</div>
+              <div class="tl-swim-month-cell">1</div>
+              <div class="tl-swim-month-cell">2</div>
+              <div class="tl-swim-month-cell">3</div>
+              <div class="tl-swim-month-cell">4</div>
+              <div class="tl-swim-month-cell">5</div>
+              <div class="tl-swim-month-cell">6</div>
+              <div class="tl-swim-month-cell">7</div>
+              <div class="tl-swim-month-cell">8</div>
+              <div class="tl-swim-month-cell">9</div>
+              <div class="tl-swim-month-cell">10</div>
+              <div class="tl-swim-month-cell">11</div>
+              <div class="tl-swim-month-cell">12</div>
+            </div>
+            <div class="tl-swim-wrapper">
+              <div class="tl-grid-overlay">
+                <div class="tl-grid-col"></div><div class="tl-grid-col"></div><div class="tl-grid-col"></div>
+                <div class="tl-grid-col"></div><div class="tl-grid-col"></div><div class="tl-grid-col"></div>
+                <div class="tl-grid-col"></div><div class="tl-grid-col"></div><div class="tl-grid-col"></div>
+                <div class="tl-grid-col"></div><div class="tl-grid-col"></div><div class="tl-grid-col"></div>
+              </div>
+
+              <div class="tl-lane">
+                <div class="tl-lane-label">Data Layer<small>Shopify catalogue &middot; orders &middot; customers</small></div>
+                <div class="tl-bar tb-platform-build" style="grid-column: 2 / 14;">Build &rarr; grows with each source</div>
+              </div>
+
+              <div class="tl-lane">
+                <div class="tl-lane-label">Platform<small>Dashboard &middot; CX &middot; integrations</small></div>
+                <div class="tl-bar tb-platform-build" style="grid-column: 2 / 14;">Build &rarr; surfaces grow with the AIE</div>
+              </div>
+
+              <div class="tl-lane">
+                <div class="tl-lane-label">AI Employee<small>Nutri11 &middot; Sales &amp; Service</small></div>
+                <div class="tl-bar tb-p0" style="grid-column: 2 / 5;">Build</div>
+                <div class="tl-bar tb-setup" style="grid-column: 5 / 14;">Continuous support &middot; monthly cycles</div>
+              </div>
+
+              <div class="tl-lane funnel-only">
+                <div class="tl-lane-label">Commerce Funnel<small>Stage tracking &middot; dashboard</small></div>
+                <div class="tl-bar tb-p1" style="grid-column: 2 / 5;">Build</div>
+                <div class="tl-bar tb-setup" style="grid-column: 5 / 14;">Continuous support &middot; monthly cycles</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swim-legend">
+        <span><i style="background:var(--blue)"></i> Build (hands-on)</span>
+        <span><i style="background:var(--bg-3)"></i> Continuous support (monthly cycles)</span>
       </div>
     </div>
   </div>
