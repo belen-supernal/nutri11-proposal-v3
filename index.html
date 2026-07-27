@@ -598,6 +598,9 @@ body[data-v="b"] .tl-lane.funnel-only { display:grid; }
 .swim-legend { display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; font-size:11px; color:var(--text-3); }
 .swim-legend span { display:inline-flex; align-items:center; gap:7px; }
 .swim-legend i { width:12px; height:12px; border-radius:3px; display:inline-block; }
+.swim-phase { font-size:9px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; text-align:center; padding-bottom:5px; margin:0 2px; }
+.swim-phase.agreed { color:var(--blue); border-bottom:2px solid var(--blue); }
+.swim-phase.m2m { color:var(--text-4); border-bottom:2px solid var(--border); }
 
 </style>
 </head>
@@ -796,7 +799,13 @@ body[data-v="b"] .tl-lane.funnel-only { display:grid; }
       </div>
     </div>
 
-    <div id="activation" style="margin-top:52px;">
+    <div style="max-width:840px; margin-top:34px;">
+      <p style="font-size:15px; color:var(--text); font-weight:600; line-height:1.6;">Milestones are set for the first three months only. What comes after is agreed month to month.</p>
+      <p style="font-size:14px; color:var(--text-2); line-height:1.65; margin-top:12px;">After month 3, work continues in monthly cycles under the same fee. Each cycle opens with a scoping conversation where Nutrillermo confirms what ships next from the shared backlog, and closes with a review of what shipped against the KPIs.</p>
+      <p style="font-size:14px; color:var(--text-2); line-height:1.65; margin-top:12px;">Work that doesn't ship in a given cycle rolls forward to the next.</p>
+    </div>
+
+    <div id="activation" style="margin-top:40px;">
       <div class="tl-swim-outer" style="margin-top:0;">
         <div class="tl-swim-inner">
           <div class="tl-swim-section" style="border-top:none; padding-top:0;">
@@ -822,6 +831,12 @@ body[data-v="b"] .tl-lane.funnel-only { display:grid; }
                 <div class="tl-grid-col"></div><div class="tl-grid-col"></div><div class="tl-grid-col"></div>
                 <div class="tl-grid-col"></div><div class="tl-grid-col"></div><div class="tl-grid-col"></div>
                 <div class="tl-grid-col"></div><div class="tl-grid-col"></div><div class="tl-grid-col"></div>
+              </div>
+
+              <div class="tl-lane" style="min-height:auto; margin-bottom:8px;">
+                <div class="tl-lane-label"></div>
+                <div class="swim-phase agreed" style="grid-column: 2 / 5;">First milestones · agreed</div>
+                <div class="swim-phase m2m" style="grid-column: 5 / 14;">Month to month</div>
               </div>
 
               <div class="tl-lane">
